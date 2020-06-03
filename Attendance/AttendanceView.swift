@@ -148,12 +148,12 @@ func getPeople() -> [Person] {
 
 //MARK: - Extentions
 
-extension View {
-   func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
-        if conditional {
-            return AnyView(content(self))
-        } else {
-            return AnyView(self)
-        }
-    }
-}
+//extension View {
+//   func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
+//        if conditional {
+//            return AnyView(content(self))
+//        } else {
+//            return AnyView(self)
+//        }
+//    }
+//}
