@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AttendanceView: View {
-    @State private var people: [Person] = [Person("Mikael"), Person("Collin")]
+    @State private var people: [Person] = getPeople()
     @State private var addingPerson = ""
     @State private var keyboardIsActive = false
     
@@ -21,20 +21,24 @@ struct AttendanceView: View {
                     PersonCell(for: person)
                         .onTapGesture {
                             self.toggleAttendance(id: person.id)
+                            setPeople(for: self.people)
                         }
                 }
                 .onDelete { index in
                     self.people.remove(atOffsets: index)
+                    setPeople(for: self.people)
                 }
                 .buttonStyle(PlainButtonStyle())
                 
                 TextField("Add Name", text: self.$addingPerson, onCommit: {
                     if self.addingPerson != "" {
                         self.people.append(Person(self.addingPerson))
+                        setPeople(for: self.people)
                     }
                     self.addingPerson = ""
                 })
                     .autocapitalization(.words)
+                    .accentColor(Color("MyGreen"))
                 
                 Rectangle()
                     .frame(maxWidth: .infinity)
@@ -123,24 +127,25 @@ struct People: Codable {
 
 //MARK: - Functions
 
-func setPeople(people: [Person]) {
+func setPeople(for people: [Person]) {
+    print("Saving")
     let encoder = JSONEncoder()
     if let encoded = try? encoder.encode(people) {
         let defaults = UserDefaults.standard
         defaults.set(encoded, forKey: "SavedPeople")
+        print("Saved")
     }
 }
 
 func getPeople() -> [Person] {
+    print("getting people")
     let defaults = UserDefaults.standard
     if let savedPeople = defaults.object(forKey: "SavedPeople") as? Data {
+        print("Got Saved People")
         let decoder = JSONDecoder()
-        if let loadedPeople = try? decoder.decode(People.self, from: savedPeople) {
-            var people: [Person] = []
-            for person in loadedPeople.list {
-                people.append(person)
-            }
-            return people
+        if let loadedPeople = try? decoder.decode([Person].self, from: savedPeople) {
+            print("Got loaded People")
+            return loadedPeople
         }
     }
     return [Person("Johny Appleseed")]
