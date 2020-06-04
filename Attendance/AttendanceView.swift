@@ -11,7 +11,6 @@ import SwiftUI
 struct AttendanceView: View {
     @State private var people: [Person] = getPeople()
     @State private var addingPerson = ""
-    @State private var keyboardIsActive = false
     
     var body: some View {
         NavigationView {
@@ -30,7 +29,7 @@ struct AttendanceView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 
-                TextField("Add Name", text: self.$addingPerson, onCommit: {
+                TextField("Add Name", text: $addingPerson, onCommit: {
                     if self.addingPerson != "" {
                         self.people.append(Person(self.addingPerson))
                         setPeople(for: self.people)
@@ -39,18 +38,17 @@ struct AttendanceView: View {
                 })
                     .autocapitalization(.words)
                     .accentColor(Color("MyGreen"))
+                    .padding(.vertical, 10)
                 
                 Rectangle()
                     .frame(maxWidth: .infinity)
                     .frame(height: 600)
                     .foregroundColor(Color.white.opacity(0.0001))
+                    .onTapGesture {
+                        self.addingPerson = ""
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
             }
-//            .onTapGesture {
-//                print(self.keyboardIsActive)
-//                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-//                self.addingPerson = ""
-//                self.keyboardIsActive = false
-//            }
 //MARK: - NavBar Set-Up
             .navigationBarTitle("Attendance")
             .navigationBarItems(trailing:
@@ -70,6 +68,7 @@ struct AttendanceView: View {
                 .foregroundColor(Color("MyGreen"))
             )
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 //MARK: - Functions
     
@@ -85,7 +84,7 @@ struct AttendanceView: View {
 
 struct AttendanceView_Previews: PreviewProvider {
     static var previews: some View {
-        AttendanceView()
+        AttendanceView().colorScheme(.dark)
     }
 }
 
@@ -103,6 +102,7 @@ struct PersonCell: View {
             Rectangle()
                 .foregroundColor(Color.white.opacity(0.0001))
         }
+        .padding(.vertical, 10)
     }
     init(for person: Person) {
         self.person = person
