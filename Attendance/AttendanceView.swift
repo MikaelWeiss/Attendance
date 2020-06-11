@@ -11,6 +11,9 @@ import SwiftUI
 struct AttendanceView: View {
     @State private var people: [Person] = getPeople()
     @State private var addingPerson = ""
+    @State private var showingPasteboardAlert = false
+//    @State private var isEditMode: EditMode = .inactive
+//    I eventually can use this to change the list to a list of textfields that are editable.
     
     var body: some View {
         NavigationView {
@@ -27,6 +30,10 @@ struct AttendanceView: View {
                     self.people.remove(atOffsets: index)
                     setPeople(for: self.people)
                 }
+                .onMove(perform: { (source, destination) in
+                    self.people.move(fromOffsets: source, toOffset: destination)
+                    setPeople(for: self.people)
+                })
                 .buttonStyle(PlainButtonStyle())
                 
                 TextField("Add Name", text: $addingPerson, onCommit: {
@@ -49,28 +56,40 @@ struct AttendanceView: View {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }
             }
+//            .environment(\.editMode, self.$isEditMode)
 //MARK: - NavBar Set-Up
             .navigationBarTitle("Attendance")
-            .navigationBarItems(trailing:
+            .navigationBarItems(leading:
                 Button(action: {
-                    var names = [""]
+                    var names = [String]()
                     for person in self.people {
                         if person.isPresent {
                             names.append(person.name)
                         }
                     }
-                    let joinedNames = names.joined(separator: ", ")
+                    
+                    let joinedAndFilteredNamesNames = names.filter({ $0 != ""}).joined(separator: ", ")
                     let nameOfMonth = Date().getMonthStringValue()
                     let dayOfMonth = self.getOrdinalNumber(Calendar.current.component(.day, from: Date()))
-                    let text = "\(nameOfMonth) \(String(dayOfMonth)):\n\(joinedNames)."
+                    let text = "\(nameOfMonth) \(String(dayOfMonth)):\n\(joinedAndFilteredNamesNames)."
                     let pastboard = UIPasteboard.general
                     pastboard.string = text
+                    self.showingPasteboardAlert = true
                 }) {
                     Image(systemName: "square.and.pencil")
                         .font(.system(size: 18, weight: .bold))
+                        .imageScale(.medium)
+                        .padding(.all, 10)
                 }
-                .foregroundColor(Color("MyGreen"))
+                .foregroundColor(Color("MyGreen")),
+                trailing:
+                EditButton()
+                    .foregroundColor(Color("MyGreen"))
+                    .padding(.all, 1)
             )
+            .alert(isPresented: $showingPasteboardAlert) {
+                    Alert(title: Text("Copied"), message: Text("List was copied to the clipboard"), dismissButton: .default(Text("OK")))
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
