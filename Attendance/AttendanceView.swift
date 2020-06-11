@@ -53,12 +53,16 @@ struct AttendanceView: View {
             .navigationBarTitle("Attendance")
             .navigationBarItems(trailing:
                 Button(action: {
-                    var text = ""
+                    var names = [""]
                     for person in self.people {
                         if person.isPresent {
-                            text.append("\(person.name), ")
+                            names.append(person.name)
                         }
                     }
+                    let joinedNames = names.joined(separator: ", ")
+                    let nameOfMonth = Date().getMonthStringValue()
+                    let dayOfMonth = self.getOrdinalNumber(Calendar.current.component(.day, from: Date()))
+                    let text = "\(nameOfMonth) \(String(dayOfMonth)):\n\(joinedNames)."
                     let pastboard = UIPasteboard.general
                     pastboard.string = text
                 }) {
@@ -80,6 +84,7 @@ struct AttendanceView: View {
         }
     }
 }
+
 //MARK: - Preview
 
 struct AttendanceView_Previews: PreviewProvider {
@@ -162,3 +167,20 @@ func getPeople() -> [Person] {
 //        }
 //    }
 //}
+
+
+extension Date {
+    func getMonthStringValue() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        return dateFormatter.string(from: self)
+    }
+}
+
+extension AttendanceView {
+    func getOrdinalNumber(_ number: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .ordinal
+        return formatter.string(from: NSNumber(value: number))!
+    }
+}
