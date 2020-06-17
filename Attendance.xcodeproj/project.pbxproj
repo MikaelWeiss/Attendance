@@ -13,6 +13,7 @@
 		A51D38FC2487C96A00767154 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51D38FB2487C96A00767154 /* Assets.xcassets */; };
 		A51D38FF2487C96A00767154 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51D38FE2487C96A00767154 /* Preview Assets.xcassets */; };
 		A51D39022487C96A00767154 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51D39002487C96A00767154 /* LaunchScreen.storyboard */; };
+		A57D01FE2495AC1E006A87A2 /* PersonOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D01FD2495AC1E006A87A2 /* PersonOverview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A51D38FE2487C96A00767154 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A51D39012487C96A00767154 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A51D39032487C96A00767154 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A57D01FD2495AC1E006A87A2 /* PersonOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonOverview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				A51D38F52487C96900767154 /* AppDelegate.swift */,
 				A51D38F72487C96900767154 /* SceneDelegate.swift */,
 				A51D38F92487C96900767154 /* AttendanceView.swift */,
+				A57D01FD2495AC1E006A87A2 /* PersonOverview.swift */,
 				A51D38FB2487C96A00767154 /* Assets.xcassets */,
 				A51D39002487C96A00767154 /* LaunchScreen.storyboard */,
 				A51D39032487C96A00767154 /* Info.plist */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51D38F62487C96900767154 /* AppDelegate.swift in Sources */,
+				A57D01FE2495AC1E006A87A2 /* PersonOverview.swift in Sources */,
 				A51D38F82487C96900767154 /* SceneDelegate.swift in Sources */,
 				A51D38FA2487C96900767154 /* AttendanceView.swift in Sources */,
 			);
