@@ -85,7 +85,7 @@ struct AttendanceView: View {
                 trailing:
                 EditButton()
                     .foregroundColor(Color("MyGreen"))
-                    .padding(.all, 1)
+                    .padding(.all, 2)
             )
             .alert(isPresented: $showingPasteboardAlert) {
                     Alert(title: Text("Copied"), message: Text("List was copied to the clipboard"), dismissButton: .default(Text("OK")))
