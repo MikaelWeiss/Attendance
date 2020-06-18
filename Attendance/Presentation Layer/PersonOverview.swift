@@ -20,12 +20,17 @@ struct PersonOverview: View {
     var body: some View {
         ScrollView {
             MonthNavBar(data: data)
-            ForEach(1 ..< data.currentMonth.getStartDateOfMonthAndNumberOfDaysInMonth().1) { val in
-                Text(String(val))
-                .overlay(
-                    Circle().strokeBorder(lineWidth: 1, antialiased: false)
+            //            ForEach(1 ..< data.currentMonth.getStartDateOfMonthAndNumberOfDaysInMonth().1) { val in
+            //
+            //            }
+            GridStack(rows: 5, columns: 7) { row, col in
+                Button(action: {
+                    
+                }) {
+                    Image(systemName: "circle")
+                        .font(.system(size: 27, weight: .semibold))
                         .frame(width: 30, height: 30)
-                )
+                        .foregroundColor(Color("MyGreen"))}
             }
         }
     }
@@ -105,7 +110,7 @@ extension Date {
         let calendar = Calendar.current
         
         let interval = calendar.dateInterval(of: .month, for: self)!
-
+        
         let startOfMonth = interval.start
         let range = calendar.range(of: .day, in: .month, for: self)!
         let numOfDays = range.count + 1

@@ -8,7 +8,11 @@
 
 import SwiftUI
 
+//MARK: - Attendance View
+
+
 struct AttendanceView: View {
+//MARK: Variables
     @State private var people: [Person] = getPeople()
     @State private var addingPerson = ""
     @State private var showingPasteboardAlert = false
@@ -17,7 +21,9 @@ struct AttendanceView: View {
     
     var body: some View {
         NavigationView {
-//MARK: - List
+            
+//MARK: List
+            
             List {
                 ForEach(people) { person in
                     PersonCell(for: person)
@@ -57,7 +63,9 @@ struct AttendanceView: View {
                     }
             }
 //            .environment(\.editMode, self.$isEditMode)
-//MARK: - NavBar Set-Up
+                
+//MARK: NavBar Set-Up
+                
             .navigationBarTitle("Attendance")
             .navigationBarItems(leading:
                 Button(action: {
@@ -93,7 +101,7 @@ struct AttendanceView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-//MARK: - Functions
+//MARK: Functions
     
     func toggleAttendance(id: UUID) {
         for index in people.indices {
@@ -133,22 +141,6 @@ struct PersonCell: View {
     }
 }
 
-//MARK: - Structures
-struct Person: Identifiable, Codable {
-    let id = UUID()
-    var name: String = ""
-    var isPresent: Bool = false
-    
-    init(_ name: String) {
-        self.name = name
-    }
-}
-
-struct People: Codable {
-    var list: [Person]
-}
-
-
 //MARK: - Functions
 
 func setPeople(for people: [Person]) {
@@ -177,6 +169,15 @@ func getPeople() -> [Person] {
 
 //MARK: - Extentions
 
+extension AttendanceView {
+    func getOrdinalNumber(_ number: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .ordinal
+        return formatter.string(from: NSNumber(value: number))!
+    }
+}
+
+//I have no idea what this is for, but I'm keeping it 'cause I think it was important...🤷‍♂️
 //extension View {
 //   func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
 //        if conditional {
@@ -186,20 +187,3 @@ func getPeople() -> [Person] {
 //        }
 //    }
 //}
-
-
-extension Date {
-    func getMonthStringValue() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "LLLL"
-        return dateFormatter.string(from: self)
-    }
-}
-
-extension AttendanceView {
-    func getOrdinalNumber(_ number: Int) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .ordinal
-        return formatter.string(from: NSNumber(value: number))!
-    }
-}
