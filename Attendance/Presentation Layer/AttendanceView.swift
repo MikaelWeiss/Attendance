@@ -26,11 +26,24 @@ struct AttendanceView: View {
             
             List {
                 ForEach(people) { person in
-                    PersonCell(for: person)
-                        .onTapGesture {
-                            self.toggleAttendance(id: person.id)
-                            setPeople(for: self.people)
+                    ZStack {
+                        PersonCell(for: person)
+                            .onTapGesture {
+                                self.toggleAttendance(id: person.id)
+                                setPeople(for: self.people)
+                            }
+                        HStack {
+                            NavigationLink(destination: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Destination@*/Text("Destination")/*@END_MENU_TOKEN@*/) {
+                                
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 18, weight: .heavy))
+                                        .frame(width: 44, height: 44)
+                            }
                         }
+                    }
+                    
                 }
                 .onDelete { index in
                     self.people.remove(atOffsets: index)
