@@ -10,6 +10,10 @@ import Foundation
 
 struct Person: Identifiable, Codable {
     let id = UUID()
+    //I don't quite understand why I have to include this, but I was told by Xcode to add it in order to silence a warning.
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+    }
     var name: String = ""
     var isPresent: Bool = false
     var daysPresent: [Date]?

@@ -176,14 +176,3 @@ extension AttendanceView {
         return formatter.string(from: NSNumber(value: number))!
     }
 }
-
-//I have no idea what this is for, but I'm keeping it 'cause I think it was important...🤷‍♂️
-//extension View {
-//   func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
-//        if conditional {
-//            return AnyView(content(self))
-//        } else {
-//            return AnyView(self)
-//        }
-//    }
-//}

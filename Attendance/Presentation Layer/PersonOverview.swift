@@ -10,27 +10,32 @@ import SwiftUI
 
 class MonthData: ObservableObject {
     @Published var currentMonth = Date()
-    
 }
 
 struct PersonOverview: View {
     @ObservedObject var data = MonthData()
     @Binding var name: String
+    @Environment(\.calendar) var calendar
     
     var body: some View {
-        ScrollView {
+        
+        let interval = calendar.dateInterval(of: .month, for: data.currentMonth)!
+//        let startOfMonth = interval.start
+        let range = calendar.range(of: .day, in: .weekOfMonth, for: data.currentMonth)!
+        
+        return ScrollView {
             MonthNavBar(data: data)
-            //            ForEach(1 ..< data.currentMonth.getStartDateOfMonthAndNumberOfDaysInMonth().1) { val in
-            //
-            //            }
-            GridStack(rows: 5, columns: 7) { row, col in
-                Button(action: {
-                    
-                }) {
-                    Image(systemName: "circle")
-                        .font(.system(size: 27, weight: .semibold))
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color("MyGreen"))}
+            
+            HStack {
+                ForEach(1 ..< 5) { num in
+                    ForEach(1 ..< 7) { num in
+                        
+                        Image(systemName: "circle")
+                            .font(.system(size: 27, weight: .semibold))
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color("MyGreen"))
+                    }
+                }
             }
         }
     }
