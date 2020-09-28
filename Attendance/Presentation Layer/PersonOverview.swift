@@ -20,9 +20,6 @@ struct PersonOverview: View {
     var body: some View {
         ScrollView {
             MonthNavBar(data: data)
-            //            ForEach(1 ..< data.currentMonth.getStartDateOfMonthAndNumberOfDaysInMonth().1) { val in
-            //
-            //            }
             GridStack(rows: 5, columns: 7) { row, col in
                 Button(action: {
                     

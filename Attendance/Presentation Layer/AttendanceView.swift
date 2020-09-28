@@ -39,16 +39,17 @@ struct AttendanceView: View {
                     self.people.remove(atOffsets: index)
                     setPeople(for: self.people)
                 }
-                .onMove(perform: { (source, destination) in
-                    self.people.move(fromOffsets: source, toOffset: destination)
-                    setPeople(for: self.people)
-                })
+//                .onMove(perform: { (source, destination) in
+//                    self.people.move(fromOffsets: source, toOffset: destination)
+//                    setPeople(for: self.people)
+//                })
                 .buttonStyle(PlainButtonStyle())
                 
                 TextField("Add Name", text: $addingPerson, onCommit: {
                     if self.addingPerson != "" {
                         self.people.append(Person(self.addingPerson))
                         setPeople(for: self.people)
+                        self.people = getPeople()
                     }
                     self.addingPerson = ""
                 })
@@ -162,8 +163,11 @@ func getPeople() -> [Person] {
     if let savedPeople = defaults.object(forKey: "SavedPeople") as? Data {
         print("Got Saved People")
         let decoder = JSONDecoder()
-        if let loadedPeople = try? decoder.decode([Person].self, from: savedPeople) {
+        if var loadedPeople = try? decoder.decode([Person].self, from: savedPeople) {
             print("Got loaded People")
+            loadedPeople.sort { (lhs, rhs) -> Bool in
+                return lhs.name < rhs.name
+            }
             return loadedPeople
         }
     }

@@ -9,18 +9,20 @@
 import Foundation
 
 struct Person: Identifiable, Codable {
-    let id = UUID()
+    let id: UUID
     var name: String = ""
     var isPresent: Bool = false
     var daysPresent: [Date]?
     
     init(_ name: String) {
         self.name = name
+        self.id = UUID()
     }
     
     init(name: String, daysPresent: [Date]) {
         self.name = name
         self.daysPresent = daysPresent
+        self.id = UUID()
     }
 }
 
