@@ -129,12 +129,15 @@ struct PersonCell: View {
     var person: Person
     
     var body: some View {
-        HStack {
+        HStack (alignment: .center) {
             Image(systemName: person.isPresent ? "app.fill" : "app")
                 .font(.system(size: 18, weight: .heavy))
                 .foregroundColor(Color("MyGreen"))
             
             Text(person.name)
+                .font(.system(size: 15, weight: .heavy))
+                .foregroundColor(Color("MyGreen"))
+            
             Rectangle()
                 .foregroundColor(Color.white.opacity(0.0001))
         }
