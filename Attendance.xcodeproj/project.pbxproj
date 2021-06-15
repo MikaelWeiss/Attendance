@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A51D38F62487C96900767154 /* AttendenceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D38F52487C96900767154 /* AttendenceApp.swift */; };
-		A51D38FA2487C96900767154 /* AttendanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D38F92487C96900767154 /* AttendanceView.swift */; };
+		A51D38F62487C96900767154 /* AttendanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D38F52487C96900767154 /* AttendanceApp.swift */; };
+		A51D38FA2487C96900767154 /* AttendanceOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D38F92487C96900767154 /* AttendanceOverview.swift */; };
 		A51D38FC2487C96A00767154 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51D38FB2487C96A00767154 /* Assets.xcassets */; };
 		A51D38FF2487C96A00767154 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51D38FE2487C96A00767154 /* Preview Assets.xcassets */; };
 		A5655CF8249BEA7800389F26 /* Date+GenerateDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5655CF7249BEA7800389F26 /* Date+GenerateDates.swift */; };
@@ -21,8 +21,8 @@
 
 /* Begin PBXFileReference section */
 		A51D38F22487C96900767154 /* Attendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attendance.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A51D38F52487C96900767154 /* AttendenceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendenceApp.swift; sourceTree = "<group>"; };
-		A51D38F92487C96900767154 /* AttendanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceView.swift; sourceTree = "<group>"; };
+		A51D38F52487C96900767154 /* AttendanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceApp.swift; sourceTree = "<group>"; };
+		A51D38F92487C96900767154 /* AttendanceOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceOverview.swift; sourceTree = "<group>"; };
 		A51D38FB2487C96A00767154 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A51D38FE2487C96A00767154 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A51D39032487C96A00767154 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		A58EE213249B933500881E3F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				A51D38F92487C96900767154 /* AttendanceView.swift */,
+				A5A39A152679607400D6409F /* Scenes */,
 				A57D01FD2495AC1E006A87A2 /* PersonOverview.swift */,
 				A5B6E2A5249BDAF00019F7B4 /* Calendar.swift */,
 				A5A9C6FA249BE31200C7A516 /* CalendarView.swift */,
@@ -121,10 +121,18 @@
 			children = (
 				A51D38FD2487C96A00767154 /* Preview Content */,
 				A51D39032487C96A00767154 /* Info.plist */,
-				A51D38F52487C96900767154 /* AttendenceApp.swift */,
+				A51D38F52487C96900767154 /* AttendanceApp.swift */,
 				A51D38FB2487C96A00767154 /* Assets.xcassets */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		A5A39A152679607400D6409F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A51D38F92487C96900767154 /* AttendanceOverview.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,10 +208,10 @@
 				A5B6E2A6249BDAF00019F7B4 /* Calendar.swift in Sources */,
 				A58EE217249B946F00881E3F /* Person.swift in Sources */,
 				A5A9C6FB249BE31200C7A516 /* CalendarView.swift in Sources */,
-				A51D38F62487C96900767154 /* AttendenceApp.swift in Sources */,
+				A51D38F62487C96900767154 /* AttendanceApp.swift in Sources */,
 				A57D01FE2495AC1E006A87A2 /* PersonOverview.swift in Sources */,
 				A5655CF8249BEA7800389F26 /* Date+GenerateDates.swift in Sources */,
-				A51D38FA2487C96900767154 /* AttendanceView.swift in Sources */,
+				A51D38FA2487C96900767154 /* AttendanceOverview.swift in Sources */,
 				A58EE21A249B952A00881E3F /* Date+MonthStringValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

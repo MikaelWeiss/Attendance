@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  AttendanceApp.swift
 //  Attendance
 //
 //  Created by Mikael Weiss on 6/3/20.
@@ -9,7 +9,7 @@
 import SwiftUI
 
 @main
-struct AttendenceApp: App {
+struct AttendanceApp: App {
     var body: some Scene {
         WindowGroup {
             AttendanceView()
