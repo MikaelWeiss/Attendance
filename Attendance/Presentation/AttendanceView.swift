@@ -12,18 +12,13 @@ import SwiftUI
 
 
 struct AttendanceView: View {
-//MARK: Variables
+    //MARK: Variables
     @State private var people: [Person] = getPeople()
     @State private var addingPerson = ""
     @State private var showingPasteboardAlert = false
-//    @State private var isEditMode: EditMode = .inactive
-//    I eventually can use this to change the list to a list of textfields that are editable.
     
     var body: some View {
         NavigationView {
-            
-//MARK: List
-            
             List {
                 ForEach(people) { person in
                     NavigationLink(destination: Text("Sup")) {
@@ -33,17 +28,11 @@ struct AttendanceView: View {
                                 setPeople(for: self.people)
                             }
                     }
-                    
                 }
                 .onDelete { index in
                     self.people.remove(atOffsets: index)
                     setPeople(for: self.people)
                 }
-//                .onMove(perform: { (source, destination) in
-//                    self.people.move(fromOffsets: source, toOffset: destination)
-//                    setPeople(for: self.people)
-//                })
-                .buttonStyle(PlainButtonStyle())
                 
                 TextField("Add Name", text: $addingPerson, onCommit: {
                     if self.addingPerson != "" {
@@ -56,56 +45,44 @@ struct AttendanceView: View {
                     .autocapitalization(.words)
                     .accentColor(Color("MyGreen"))
                     .padding(.vertical, 10)
-                
-                Rectangle()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 600)
-                    .foregroundColor(Color.white.opacity(0.0001))
-                    .onTapGesture {
-                        self.addingPerson = ""
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
             }
-//            .environment(\.editMode, self.$isEditMode)
-                
-//MARK: NavBar Set-Up
-                
             .navigationBarTitle("Attendance")
             .navigationBarItems(leading:
-                Button(action: {
-                    var names = [String]()
-                    for person in self.people {
-                        if person.isPresent {
-                            names.append(person.name)
-                        }
+                                    Button(action: {
+                var names = [String]()
+                for person in self.people {
+                    if person.isPresent {
+                        names.append(person.name)
                     }
-                    
-                    let joinedAndFilteredNamesNames = names.filter({ $0 != ""}).joined(separator: ", ")
-                    let nameOfMonth = Date().getMonthStringValue()
-                    let dayOfMonth = self.getOrdinalNumber(Calendar.current.component(.day, from: Date()))
-                    let text = "\(nameOfMonth) \(String(dayOfMonth)):\n\(joinedAndFilteredNamesNames)."
-                    let pastboard = UIPasteboard.general
-                    pastboard.string = text
-                    self.showingPasteboardAlert = true
-                }) {
-                    Image(systemName: "square.and.pencil")
-                        .font(.system(size: 18, weight: .bold))
-                        .imageScale(.medium)
-                        .padding(.all, 10)
                 }
-                .foregroundColor(Color("MyGreen")),
-                trailing:
-                EditButton()
-                    .foregroundColor(Color("MyGreen"))
-                    .padding(.all, 2)
+                
+                let joinedAndFilteredNamesNames = names.filter({ $0 != ""}).joined(separator: ", ")
+                let nameOfMonth = Date().getMonthStringValue()
+                let dayOfMonth = self.getOrdinalNumber(Calendar.current.component(.day, from: Date()))
+                let text = "\(nameOfMonth) \(String(dayOfMonth)):\n\(joinedAndFilteredNamesNames)."
+                let pastboard = UIPasteboard.general
+                pastboard.string = text
+                self.showingPasteboardAlert = true
+            }) {
+                Image(systemName: "square.and.pencil")
+                    .font(.system(size: 18, weight: .bold))
+                    .imageScale(.medium)
+                    .padding(.all, 10)
+            }
+                                    .foregroundColor(Color("MyGreen")),
+                                
+                                trailing:
+                                    EditButton()
+                                    .foregroundColor(Color("MyGreen"))
+                                    .padding(.all, 2)
             )
             .alert(isPresented: $showingPasteboardAlert) {
-                    Alert(title: Text("Copied"), message: Text("List was copied to the clipboard"), dismissButton: .default(Text("OK")))
+                Alert(title: Text("Copied"), message: Text("List was copied to the clipboard"), dismissButton: .default(Text("OK")))
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-//MARK: Functions
+    //MARK: Functions
     
     func toggleAttendance(id: UUID) {
         for index in people.indices {
@@ -137,9 +114,6 @@ struct PersonCell: View {
             Text(person.name)
                 .font(.system(size: 15, weight: .heavy))
                 .foregroundColor(Color("MyGreen"))
-            
-            Rectangle()
-                .foregroundColor(Color.white.opacity(0.0001))
         }
         .padding(.vertical, 10)
     }
@@ -186,14 +160,3 @@ extension AttendanceView {
         return formatter.string(from: NSNumber(value: number))!
     }
 }
-
-//I have no idea what this is for, but I'm keeping it 'cause I think it was important...🤷‍♂️
-//extension View {
-//   func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
-//        if conditional {
-//            return AnyView(content(self))
-//        } else {
-//            return AnyView(self)
-//        }
-//    }
-//}
