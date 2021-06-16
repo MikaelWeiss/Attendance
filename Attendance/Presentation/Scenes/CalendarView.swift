@@ -41,11 +41,11 @@ struct CalendarView: View {
                             Image(systemName: day.isSelected ? "cirlcle.fill" : "circle")
                                 .frame(width: 30, height: 30)
                                 .font(.system(size: 30, weight: .semibold))
-                                .foregroundColor(Color("MyGreen"))
+                                .foregroundColor(Color.appTintColor)
                                 .overlay(
                                     Text("\(self.calendar.component(.day, from: day.date))")
                                         .font(.system(size: 16, weight: .bold))
-                                        .foregroundColor(day.isSelected ? Color(.systemBackground) : Color("MyGreen"))
+                                        .foregroundColor(day.isSelected ? Color(.systemBackground) : Color.appTintColor)
                                 )
                         }
                         .buttonStyle(PlainButtonStyle())

@@ -27,7 +27,7 @@ struct PersonOverview: View {
                     Image(systemName: "circle")
                         .font(.system(size: 27, weight: .semibold))
                         .frame(width: 30, height: 30)
-                        .foregroundColor(Color("MyGreen"))}
+                    .foregroundColor(Color.appTintColor)}
             }
         }
     }
@@ -49,7 +49,7 @@ struct MonthNavBar: View {
             }) {
                 Image(systemName: "chevron.left.circle.fill")
                     .resizable()
-                    .foregroundColor(Color("MyGreen"))
+                    .foregroundColor(Color.appTintColor)
                     .frame(width: 25, height: 25)
             }
             .frame(maxWidth: .infinity)
@@ -62,7 +62,7 @@ struct MonthNavBar: View {
             }) {
                 Image(systemName: "chevron.right.circle.fill")
                     .resizable()
-                    .foregroundColor(Color("MyGreen"))
+                    .foregroundColor(Color.appTintColor)
                     .frame(width: 25, height: 25)
             }
             .frame(maxWidth: .infinity)
@@ -72,12 +72,12 @@ struct MonthNavBar: View {
 //
 //struct GridView: View {
 //    @Binding var numbers: [Int]
-//    
+//
 //    VStack {
 //        ForEach(0...5, id: \.self) { row in
 //            HStack {
 //                ForEach(0...7, id: \.self) { column in
-//                    
+//
 //                }
 //            }
 //        }

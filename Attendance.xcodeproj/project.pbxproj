@@ -15,6 +15,15 @@
 		A57D01FE2495AC1E006A87A2 /* PersonOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57D01FD2495AC1E006A87A2 /* PersonOverview.swift */; };
 		A58EE217249B946F00881E3F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58EE216249B946F00881E3F /* Person.swift */; };
 		A58EE21A249B952A00881E3F /* Date+MonthStringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58EE219249B952A00881E3F /* Date+MonthStringValue.swift */; };
+		A5A39A182679633800D6409F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A172679633800D6409F /* Color+Extensions.swift */; };
+		A5A39A2026796EA900D6409F /* AttendanceOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A1A26796EA900D6409F /* AttendanceOverviewPresenter.swift */; };
+		A5A39A2126796EA900D6409F /* AttendanceOverviewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A1B26796EA900D6409F /* AttendanceOverviewModels.swift */; };
+		A5A39A2226796EA900D6409F /* AttendanceOverviewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A1C26796EA900D6409F /* AttendanceOverviewScene.swift */; };
+		A5A39A2326796EA900D6409F /* AttendanceOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A1D26796EA900D6409F /* AttendanceOverviewInteractor.swift */; };
+		A5A39A2426796EA900D6409F /* AttendanceOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A1E26796EA900D6409F /* AttendanceOverviewView.swift */; };
+		A5A39A2526796EA900D6409F /* AttendanceOverviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A1F26796EA900D6409F /* AttendanceOverviewService.swift */; };
+		A5A39A28267973DF00D6409F /* PersonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A27267973DF00D6409F /* PersonRepository.swift */; };
+		A5A39A2A267978E100D6409F /* ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A39A29267978E100D6409F /* ApplicationState.swift */; };
 		A5A9C6FB249BE31200C7A516 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9C6FA249BE31200C7A516 /* CalendarView.swift */; };
 		A5B6E2A6249BDAF00019F7B4 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B6E2A5249BDAF00019F7B4 /* Calendar.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +39,15 @@
 		A57D01FD2495AC1E006A87A2 /* PersonOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonOverview.swift; sourceTree = "<group>"; };
 		A58EE216249B946F00881E3F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A58EE219249B952A00881E3F /* Date+MonthStringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+MonthStringValue.swift"; sourceTree = "<group>"; };
+		A5A39A172679633800D6409F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		A5A39A1A26796EA900D6409F /* AttendanceOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceOverviewPresenter.swift; sourceTree = "<group>"; };
+		A5A39A1B26796EA900D6409F /* AttendanceOverviewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceOverviewModels.swift; sourceTree = "<group>"; };
+		A5A39A1C26796EA900D6409F /* AttendanceOverviewScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceOverviewScene.swift; sourceTree = "<group>"; };
+		A5A39A1D26796EA900D6409F /* AttendanceOverviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceOverviewInteractor.swift; sourceTree = "<group>"; };
+		A5A39A1E26796EA900D6409F /* AttendanceOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceOverviewView.swift; sourceTree = "<group>"; };
+		A5A39A1F26796EA900D6409F /* AttendanceOverviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceOverviewService.swift; sourceTree = "<group>"; };
+		A5A39A27267973DF00D6409F /* PersonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRepository.swift; sourceTree = "<group>"; };
+		A5A39A29267978E100D6409F /* ApplicationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationState.swift; sourceTree = "<group>"; };
 		A5A9C6FA249BE31200C7A516 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		A5B6E2A5249BDAF00019F7B4 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,10 +100,8 @@
 		A58EE213249B933500881E3F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A5A39A162679632600D6409F /* Extensions */,
 				A5A39A152679607400D6409F /* Scenes */,
-				A57D01FD2495AC1E006A87A2 /* PersonOverview.swift */,
-				A5B6E2A5249BDAF00019F7B4 /* Calendar.swift */,
-				A5A9C6FA249BE31200C7A516 /* CalendarView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -103,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				A5A39A1326795F1700D6409F /* Main */,
+				A5A39A26267973C600D6409F /* Repositories */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -119,10 +136,11 @@
 		A5A39A1326795F1700D6409F /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				A51D38FD2487C96A00767154 /* Preview Content */,
 				A51D39032487C96A00767154 /* Info.plist */,
+				A5A39A29267978E100D6409F /* ApplicationState.swift */,
 				A51D38F52487C96900767154 /* AttendanceApp.swift */,
 				A51D38FB2487C96A00767154 /* Assets.xcassets */,
+				A51D38FD2487C96A00767154 /* Preview Content */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -130,9 +148,42 @@
 		A5A39A152679607400D6409F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A5A39A1926796E5D00D6409F /* AttendanceOverview */,
 				A51D38F92487C96900767154 /* AttendanceOverview.swift */,
+				A5B6E2A5249BDAF00019F7B4 /* Calendar.swift */,
+				A5A9C6FA249BE31200C7A516 /* CalendarView.swift */,
+				A57D01FD2495AC1E006A87A2 /* PersonOverview.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A5A39A162679632600D6409F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5A39A172679633800D6409F /* Color+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A5A39A1926796E5D00D6409F /* AttendanceOverview */ = {
+			isa = PBXGroup;
+			children = (
+				A5A39A1D26796EA900D6409F /* AttendanceOverviewInteractor.swift */,
+				A5A39A1B26796EA900D6409F /* AttendanceOverviewModels.swift */,
+				A5A39A1A26796EA900D6409F /* AttendanceOverviewPresenter.swift */,
+				A5A39A1C26796EA900D6409F /* AttendanceOverviewScene.swift */,
+				A5A39A1F26796EA900D6409F /* AttendanceOverviewService.swift */,
+				A5A39A1E26796EA900D6409F /* AttendanceOverviewView.swift */,
+			);
+			path = AttendanceOverview;
+			sourceTree = "<group>";
+		};
+		A5A39A26267973C600D6409F /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				A5A39A27267973DF00D6409F /* PersonRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,14 +256,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A39A2526796EA900D6409F /* AttendanceOverviewService.swift in Sources */,
+				A5A39A2226796EA900D6409F /* AttendanceOverviewScene.swift in Sources */,
 				A5B6E2A6249BDAF00019F7B4 /* Calendar.swift in Sources */,
 				A58EE217249B946F00881E3F /* Person.swift in Sources */,
+				A5A39A2326796EA900D6409F /* AttendanceOverviewInteractor.swift in Sources */,
+				A5A39A182679633800D6409F /* Color+Extensions.swift in Sources */,
+				A5A39A2126796EA900D6409F /* AttendanceOverviewModels.swift in Sources */,
 				A5A9C6FB249BE31200C7A516 /* CalendarView.swift in Sources */,
+				A5A39A28267973DF00D6409F /* PersonRepository.swift in Sources */,
 				A51D38F62487C96900767154 /* AttendanceApp.swift in Sources */,
 				A57D01FE2495AC1E006A87A2 /* PersonOverview.swift in Sources */,
+				A5A39A2026796EA900D6409F /* AttendanceOverviewPresenter.swift in Sources */,
+				A5A39A2426796EA900D6409F /* AttendanceOverviewView.swift in Sources */,
 				A5655CF8249BEA7800389F26 /* Date+GenerateDates.swift in Sources */,
 				A51D38FA2487C96900767154 /* AttendanceOverview.swift in Sources */,
 				A58EE21A249B952A00881E3F /* Date+MonthStringValue.swift in Sources */,
+				A5A39A2A267978E100D6409F /* ApplicationState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

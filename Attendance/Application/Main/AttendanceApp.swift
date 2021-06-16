@@ -12,9 +12,7 @@ import SwiftUI
 struct AttendanceApp: App {
     var body: some Scene {
         WindowGroup {
-            AttendanceView()
+            AttendanceView.ContentView()
         }
     }
 }
-
-
