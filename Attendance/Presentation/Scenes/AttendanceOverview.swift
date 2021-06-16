@@ -43,7 +43,6 @@ struct AttendanceView: View {
                     self.addingPerson = ""
                 })
                     .autocapitalization(.words)
-                    .accentColor(Color("MyGreen"))
                     .padding(.vertical, 10)
             }
             .navigationBarTitle("Attendance")
@@ -68,12 +67,10 @@ struct AttendanceView: View {
                     .font(.system(size: 18, weight: .bold))
                     .imageScale(.medium)
                     .padding(.all, 10)
-            }
-                                    .foregroundColor(Color("MyGreen")),
+            },
                                 
                                 trailing:
                                     EditButton()
-                                    .foregroundColor(Color("MyGreen"))
                                     .padding(.all, 2)
             )
             .alert(isPresented: $showingPasteboardAlert) {
@@ -109,11 +106,11 @@ struct PersonCell: View {
         HStack (alignment: .center) {
             Image(systemName: person.isPresent ? "app.fill" : "app")
                 .font(.system(size: 18, weight: .heavy))
-                .foregroundColor(Color("MyGreen"))
+                .foregroundColor(Color.appAccentColor)
             
             Text(person.name)
                 .font(.system(size: 15, weight: .heavy))
-                .foregroundColor(Color("MyGreen"))
+                .foregroundColor(Color.appAccentColor)
         }
         .padding(.vertical, 10)
     }
