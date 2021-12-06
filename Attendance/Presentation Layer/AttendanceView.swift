@@ -26,26 +26,30 @@ struct AttendanceView: View {
             
             List {
                 ForEach(people) { person in
-                    PersonCell(for: person)
-                        .onTapGesture {
-                            self.toggleAttendance(id: person.id)
-                            setPeople(for: self.people)
-                        }
+                    NavigationLink(destination: Text("Sup")) {
+                        PersonCell(for: person)
+                            .onTapGesture {
+                                self.toggleAttendance(id: person.id)
+                                setPeople(for: self.people)
+                            }
+                    }
+                    
                 }
                 .onDelete { index in
                     self.people.remove(atOffsets: index)
                     setPeople(for: self.people)
                 }
-                .onMove(perform: { (source, destination) in
-                    self.people.move(fromOffsets: source, toOffset: destination)
-                    setPeople(for: self.people)
-                })
+//                .onMove(perform: { (source, destination) in
+//                    self.people.move(fromOffsets: source, toOffset: destination)
+//                    setPeople(for: self.people)
+//                })
                 .buttonStyle(PlainButtonStyle())
                 
                 TextField("Add Name", text: $addingPerson, onCommit: {
                     if self.addingPerson != "" {
                         self.people.append(Person(self.addingPerson))
                         setPeople(for: self.people)
+                        self.people = getPeople()
                     }
                     self.addingPerson = ""
                 })
@@ -125,12 +129,15 @@ struct PersonCell: View {
     var person: Person
     
     var body: some View {
-        HStack {
+        HStack (alignment: .center) {
             Image(systemName: person.isPresent ? "app.fill" : "app")
                 .font(.system(size: 18, weight: .heavy))
                 .foregroundColor(Color("MyGreen"))
             
             Text(person.name)
+                .font(.system(size: 15, weight: .heavy))
+                .foregroundColor(Color("MyGreen"))
+            
             Rectangle()
                 .foregroundColor(Color.white.opacity(0.0001))
         }
@@ -159,8 +166,11 @@ func getPeople() -> [Person] {
     if let savedPeople = defaults.object(forKey: "SavedPeople") as? Data {
         print("Got Saved People")
         let decoder = JSONDecoder()
-        if let loadedPeople = try? decoder.decode([Person].self, from: savedPeople) {
+        if var loadedPeople = try? decoder.decode([Person].self, from: savedPeople) {
             print("Got loaded People")
+            loadedPeople.sort { (lhs, rhs) -> Bool in
+                return lhs.name < rhs.name
+            }
             return loadedPeople
         }
     }

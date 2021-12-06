@@ -98,6 +98,7 @@
 		A58EE214249B939B00881E3F /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
+				A58EE218249B94A600881E3F /* Extensions */,
 				A58EE216249B946F00881E3F /* Person.swift */,
 			);
 			path = "Domain Layer";
@@ -111,7 +112,6 @@
 				A51D39002487C96A00767154 /* LaunchScreen.storyboard */,
 				A51D38FB2487C96A00767154 /* Assets.xcassets */,
 				A51D39032487C96A00767154 /* Info.plist */,
-				A58EE218249B94A600881E3F /* Extensions */,
 			);
 			path = "Application Layer";
 			sourceTree = "<group>";
